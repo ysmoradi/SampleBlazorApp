@@ -1,0 +1,11 @@
+﻿<h3>OneWayBinding</h3>
+
+<div>Value: @Value</div>
+<div>ParameterValue: @ParameterValue</div>
+
+@code {
+    private string Value = "this is the value";
+
+    [Parameter]
+    public string ParameterValue { get; set; }
+}

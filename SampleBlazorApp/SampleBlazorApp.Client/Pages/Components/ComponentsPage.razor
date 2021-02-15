@@ -1,0 +1,26 @@
+﻿@page "/components"
+
+<h2>Componenets</h2>
+
+<hr />
+
+<OneWayBinding ParameterValue="this is the ParameterValue from parent!"></OneWayBinding>
+
+<hr />
+
+<div>counter: @count</div>
+<Event OnClick="() => count++"
+       OnClick2="v => count += v"></Event>
+
+<hr />
+
+<div>Parent Value3: @Value3</div>
+<div>Parent Value4: @Value4</div>
+<TwoWayBinding Value3=Value3
+               @bind-Value4=Value4></TwoWayBinding>
+
+@code{
+    private int count = 0;
+    private string Value3 = "initial Value3";
+    private string Value4 = "initial Value4";
+}
