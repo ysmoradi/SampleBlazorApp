@@ -1,0 +1,16 @@
+﻿<h3>Event</h3>
+
+<div>
+    <button @onclick=OnClick>Click Me!</button>
+</div>
+<div>
+    <button @onclick="() => OnClick2.InvokeAsync(2)">Click Me 2!</button>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnClick2 { get; set; }
+}

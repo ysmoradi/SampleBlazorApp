@@ -1,0 +1,31 @@
+﻿<h3>TwoWayBinding</h3>
+
+<div>
+    <div>Value1: @Value1</div>
+    <input value="@Value1" />
+</div>
+<br />
+<div>
+    <div>Value2: @Value2</div>
+    <input @bind-value="@Value2" />
+</div>
+<br />
+<div>
+    <div>Value3: @Value3</div>
+    <button @onclick=@(() => Value3 = "Updated Value3")>Update Value3</button>
+</div>
+<br />
+<div>
+    <div>Value4: @Value4</div>
+    <button @onclick=@(() => Value4Changed.InvokeAsync("Updated Value4"))>Update Value3</button>
+</div>
+
+@code {
+    private string Value1 = "this is the value";
+    private string Value2 = "this is the value2";
+
+    [Parameter] public string Value3 { get; set; }
+
+    [Parameter] public string Value4 { get; set; }
+    [Parameter] public EventCallback<string> Value4Changed { get; set; }
+}
