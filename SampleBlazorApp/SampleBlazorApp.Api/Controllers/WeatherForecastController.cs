@@ -18,10 +18,13 @@ namespace SampleBlazorApp.Api.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            // should accept take & skip
+            // should return total count
+
             var rng = new Random();
 
             return Enumerable
-                .Range(1, 5)
+                .Range(1, 50)
                 .Select(index => new WeatherForecast
                 {
                     Date = DateTime.Now.AddDays(index),
