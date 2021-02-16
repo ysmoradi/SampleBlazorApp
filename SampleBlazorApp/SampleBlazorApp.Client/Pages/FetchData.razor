@@ -4,31 +4,14 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (Forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in Forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<TelerikGrid Data="Forecasts" TotalCount="TotalForecasts" OnRead=@GetWeatherForecasts Height="400px"
+             Pageable="true" Sortable="true" Groupable="true"
+             FilterMode="Telerik.Blazor.GridFilterMode.FilterRow"
+             Resizable="true" Reorderable="true">
+    <GridColumns>
+        <GridColumn Field="@(nameof(WeatherForecast.Date))" Width="120px" />
+        <GridColumn Field="@(nameof(WeatherForecast.TemperatureC))" Title="Temperature C" Groupable="false" />
+        <GridColumn Field="@(nameof(WeatherForecast.TemperatureF))" Title="Temperature F" Filterable="false" Sortable="false" />
+        <GridColumn Field="@(nameof(WeatherForecast.Summary))" />
+    </GridColumns>
+</TelerikGrid>

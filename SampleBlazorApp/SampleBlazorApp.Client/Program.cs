@@ -16,6 +16,8 @@ namespace SampleBlazorApp.Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiAddress"]) });
 
+            builder.Services.AddTelerikBlazor();
+
             await builder.Build().RunAsync();
         }
     }
