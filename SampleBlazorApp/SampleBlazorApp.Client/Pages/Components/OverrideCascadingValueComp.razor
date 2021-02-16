@@ -1,0 +1,18 @@
+﻿<h3>OverrideCascadingValueComp</h3>
+
+<div>ParameterValue: @ParameterValue</div>
+<div>ParameterValue2: @ParameterValue2</div>
+
+<CascadingValue Name="SecondValue" Value="CascadingValue2">
+    <OverrideCascadingValueComp2></OverrideCascadingValueComp2>
+</CascadingValue>
+
+@code {
+    [CascadingParameter(Name = "FirstValue")]
+    public string ParameterValue { get; set; }
+
+    [CascadingParameter(Name = "SecondValue")]
+    public int ParameterValue2 { get; set; }
+
+    private int CascadingValue2 = 22;
+}

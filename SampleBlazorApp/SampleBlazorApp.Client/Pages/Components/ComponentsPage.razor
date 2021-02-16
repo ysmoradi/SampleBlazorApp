@@ -19,8 +19,51 @@
 <TwoWayBinding Value3=Value3
                @bind-Value4=Value4></TwoWayBinding>
 
+<hr />
+
+<CascadingValue Name="SecondValue" Value="CascadingValue2">
+    <CascadingValue Name="FirstValue" Value="CascadingValue1">
+        <CascadingValueComp></CascadingValueComp>
+    </CascadingValue>
+</CascadingValue>
+
+<hr />
+
+<CascadingValue Value="CascadingClass1">
+    <CascadingValueComp3></CascadingValueComp3>
+</CascadingValue>
+
+<hr />
+
+<CascadingValue Value="CascadingClass2">
+    <CascadingValueComp3></CascadingValueComp3>
+</CascadingValue>
+
+
+<hr />
+
+<CascadingValue Name="FirstValue" Value="CascadingValue1">
+    <CascadingValue Name="SecondValue" Value="CascadingValue2">
+        <OverrideCascadingValueComp></OverrideCascadingValueComp>
+    </CascadingValue>
+</CascadingValue>
+
+<hr />
+
+<CodeGeneratedAttributes></CodeGeneratedAttributes>
+
+<hr />
+
+<UnexpectedParameters width="10" height="@CascadingValue1" attr1="CascadingValue1"></UnexpectedParameters>
+
 @code{
     private int count = 0;
     private string Value3 = "initial Value3";
     private string Value4 = "initial Value4";
+
+    private string CascadingValue1 = "this is a cascading value";
+    private int CascadingValue2 = 11;
+
+    private CascadingClass CascadingClass1 = new CascadingClass { Prop1 = "Prop1", Prop2 = 2 };
+    private CascadingClass CascadingClass2 = new CascadingClass { Prop1 = "Prop12", Prop2 = 22 };
 }

@@ -1,0 +1,13 @@
+﻿@page "/lifecycle"
+
+<h2>LifeCycle</h2>
+
+
+<LifeCycleComp ParameterValue=@Value></LifeCycleComp>
+
+<div>@Value</div>
+<button @onclick="() => Value = DateTime.Now.Ticks.ToString()">Parent Click</button>
+
+@code {
+    private string Value = "this is a value";
+}
