@@ -1,0 +1,9 @@
+﻿<h3>CascadingValue2</h3>
+
+<div>ParameterValue: @ParameterValue</div>
+
+@code {
+
+    [CascadingParameter(Name = "SecondValue")]
+    public int ParameterValue { get; set; }
+}

@@ -1,0 +1,11 @@
+﻿<h3>CodeGeneratedAttributes</h3>
+
+<div attr1="111" @attributes=Attributes id="div1">Value: @("this is a value")</div>
+
+@code {
+    private Dictionary<string, object> Attributes = new Dictionary<string, object>
+    {
+        ["id"] = "id1",
+        ["attr1"] = "attr1",
+    };
+}

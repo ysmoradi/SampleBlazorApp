@@ -1,0 +1,19 @@
+﻿<h3>CascadingValue3</h3>
+
+<div>Prop1: @ParameterValue?.Prop1</div>
+<div>Prop2: @ParameterValue?.Prop2</div>
+
+<br />
+
+
+<div>Interface Prop1: @ParameterValue2?.Prop1</div>
+<div>Interface Prop2: @ParameterValue2?.Prop2</div>
+
+@code {
+    [CascadingParameter]
+    public CascadingClass ParameterValue { get; set; }
+
+    [CascadingParameter]
+    public ICascadingClass ParameterValue2 { get; set; }
+
+}

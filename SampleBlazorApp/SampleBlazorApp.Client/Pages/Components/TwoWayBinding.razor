@@ -17,12 +17,24 @@
 <br />
 <div>
     <div>Value4: @Value4</div>
-    <button @onclick=@(() => Value4Changed.InvokeAsync("Updated Value4"))>Update Value3</button>
+    <button @onclick=@(() => Value4Changed.InvokeAsync("Updated Value4"))>Update Value4</button>
+</div>
+<br />
+<div>
+    <div>Value5: @Value5</div>
+    <input @bind-value="@Value5" @bind-value:event="oninput" />
+</div>
+<br />
+<div>
+    <div>Value6: @Value6.ToString("MMM, dd, yyyy")</div>
+    <input @bind-value="@Value6" @bind-value:format="yyyy-MM-dd" />
 </div>
 
 @code {
     private string Value1 = "this is the value";
     private string Value2 = "this is the value2";
+    private string Value5 = "this is the value5";
+    private DateTime Value6 = DateTime.Now;
 
     [Parameter] public string Value3 { get; set; }
 

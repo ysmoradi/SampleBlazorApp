@@ -1,0 +1,9 @@
+﻿<h3>UnexpectedParameters</h3>
+
+<div attr1="1" @attributes="UnexpectedAttrs" width="1111">Value: @("Unexpected Parameters")</div>
+
+@code {
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> UnexpectedAttrs { get; set; }
+}
