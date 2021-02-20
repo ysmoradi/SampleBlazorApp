@@ -1,7 +1,4 @@
-﻿@implements IDisposable
-@inject IJSRuntime js
-
-<h2>Layouts</h2>
+﻿<h2>Layouts</h2>
 <div>
     <button>Click1</button>
 </div>
@@ -21,33 +18,6 @@
 
     private string Value = "value";
 
-    public override Task SetParametersAsync(ParameterView parameters)
-    {
-        js.InvokeVoidAsync("console.log", "SetParametersAsync");
-        return base.SetParametersAsync(parameters);
-    }
-
-    protected override Task OnInitializedAsync()
-    {
-        js.InvokeVoidAsync("console.log", "OnInitializedAsync");
-        return base.OnInitializedAsync();
-    }
-
-    protected override Task OnParametersSetAsync()
-    {
-        js.InvokeVoidAsync("console.log", "OnParametersSetAsync");
-        return base.OnParametersSetAsync();
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        js.InvokeVoidAsync("console.log", "OnAfterRender");
-        base.OnAfterRender(firstRender);
-    }
-
-    void IDisposable.Dispose()
-    {
-        js.InvokeVoidAsync("console.log", "Dispose");
-    }
+    
 
 }

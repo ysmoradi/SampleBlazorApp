@@ -1,7 +1,9 @@
 ﻿@page "/lifecycle"
+@page "/lifecycle/{id}"
+@implements IDisposable
+@inject IJSRuntime js
 
 <h2>LifeCycle</h2>
-
 
 <LifeCycleComp ParameterValue=@Value></LifeCycleComp>
 
@@ -9,5 +11,37 @@
 <button @onclick="() => Value = DateTime.Now.Ticks.ToString()">Parent Click</button>
 
 @code {
+    [Parameter]
+    public string Id { get; set; }
+
     private string Value = "this is a value";
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        js.InvokeVoidAsync("console.log", "SetParametersAsync");
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        js.InvokeVoidAsync("console.log", "OnInitializedAsync");
+        return base.OnInitializedAsync();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        js.InvokeVoidAsync("console.log", "OnParametersSetAsync");
+        return base.OnParametersSetAsync();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        js.InvokeVoidAsync("console.log", "OnAfterRender");
+        base.OnAfterRender(firstRender);
+    }
+
+    void IDisposable.Dispose()
+    {
+        js.InvokeVoidAsync("console.log", "Dispose");
+    }
 }

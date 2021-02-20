@@ -1,10 +1,33 @@
+@implements IDisposable
+@inject NavigationManager NavManager
+@inject IJSRuntime js
+
 <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
+        <div class="content">
+            <h2>Page not found</h2>
+            <p>404</p>
+        </div>
     </NotFound>
 </Router>
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        NavManager.LocationChanged += LocationChanged;
+    }
+
+    private void LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        js.InvokeVoidAsync("console.log", $"Location: {e.Location}, IsIntercepted: {e.IsNavigationIntercepted}");
+    }
+
+    void IDisposable.Dispose()
+    {
+        NavManager.LocationChanged -= LocationChanged;
+    }
+}
