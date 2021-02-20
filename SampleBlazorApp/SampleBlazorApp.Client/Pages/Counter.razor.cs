@@ -1,4 +1,6 @@
-﻿namespace SampleBlazorApp.Client.Pages
+﻿using Microsoft.AspNetCore.Components;
+
+namespace SampleBlazorApp.Client.Pages
 {
     public partial class Counter
     {
