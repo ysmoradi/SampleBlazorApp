@@ -1,0 +1,16 @@
+﻿@page "/routing/"
+@page "/routing/{id}"
+<h3>Routing Page</h3>
+
+<div>Id is: @Id</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        Id = Id ?? "default value";
+    }
+}

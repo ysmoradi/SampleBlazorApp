@@ -1,0 +1,48 @@
+﻿@page "/forms"
+
+<h3>Forms</h3>
+@*OnValidSubmit=@(() => SubmitResult="Valid")
+    OnInvalidSubmit=@(() => SubmitResult="Invalid")*@
+<EditForm EditContext=MyContext>
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <div>
+        <label>Name</label>
+        <InputText @bind-Value=model.Name></InputText>
+        <ValidationMessage For="() => model.Name"></ValidationMessage>
+    </div>
+    <div>
+        <label>Title</label>
+        <InputText @bind-Value=model.Title></InputText>
+    </div>
+    <div>
+        <label>Address</label>
+        <InputText @bind-Value=model.SubModel.Address></InputText>
+        <ValidationMessage For="() => model.SubModel.Address"></ValidationMessage>
+    </div>
+</EditForm>
+
+<div>SubmitResult: @SubmitResult</div>
+<div>
+    <button @onclick=Submit>Submit</button>
+</div>
+
+@code {
+
+    private EditContext MyContext;
+    private MyModel model;
+    private string SubmitResult = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        model = new MyModel();
+        MyContext = new EditContext(model);
+    }
+
+    private void Submit()
+    {
+        var result = MyContext.Validate();
+        SubmitResult = result ? "It's Valid" : "It's Invalid";
+    }
+}

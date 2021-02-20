@@ -1,0 +1,13 @@
+﻿@page "/page1"
+@inject NavigationManager NavManager
+
+<h3>Page1</h3>
+
+<button @onclick=GotoPage2>Goto Page2</button>
+
+@code {
+    private void GotoPage2()
+    {
+        NavManager.NavigateTo("page2");
+    }
+}
